@@ -1,8 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import { getAuth } from "firebase/auth";
+
 
 function Home() {
+  const auth = getAuth();
+  console.log("!@#",auth);
   return (
     <React.Fragment>
       <Head>
