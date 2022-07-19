@@ -1,27 +1,37 @@
 import React from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import { getAuth } from "firebase/auth";
-
+import styles from "../style/home.module.css"
+import Router from 'next/router';
 
 function Home() {
-  const auth = getAuth();
-  console.log("!@#",auth);
+  function GoToLogin (){
+    Router.push("LogIn")
+  }
+  function GoToSignUp (){
+    Router.push("SignUp")
+  }
   return (
-    <React.Fragment>
+    <div className={styles.HomeCover}>
       <Head>
         <title>Home - Nextron (with-typescript)</title>
       </Head>
-      <div>
-        <p>
-          ⚡ Electron + Next.js ⚡ -
-          <Link href="/next">
-            <a>Go to next page</a>
+      <div className={styles.HomeFrameBox}>
+        <div className={styles.HomeFrameIntroduce}>
+          안녕하세요. 반갑습니다! <br></br> FireBase기반 채팅앱입니다.
+        </div>
+        <button onClick={GoToLogin} className={styles.HomeGoToLogin}>
+          <Link href="/LogIn">
+            <a>로그인</a>
           </Link>
-        </p>
-        <img src="/images/logo.png" />
+        </button>
+        <button onClick={GoToSignUp} className={styles.HomeGoToSignUp}>
+          <Link href="/SignUp">
+            <a>회원가입</a>
+          </Link>
+        </button>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
