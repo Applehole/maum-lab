@@ -1,8 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import { getAuth } from "firebase/auth";
 import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import 'firebase/compat/auth';
+import 'firebase/firestore'
+import "../style/global.css";
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -20,18 +23,10 @@ function App({Component, pageProps}: AppProps) {
   
   const fbase = initializeApp(firebaseConfig);
   const auth = getAuth();
-  console.log(auth);
+  const dbService = getFirestore();
   return (
     <React.Fragment>
       <div>
-        <nav>
-          <Link href="/home">
-            <a>홈</a>
-          </Link>
-          <Link href="/next">
-            <a>채팅창</a>
-          </Link>
-        </nav>
         <Component {...pageProps} />
       </div>
       </React.Fragment>

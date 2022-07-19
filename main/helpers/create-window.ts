@@ -10,8 +10,8 @@ export default (windowName: string, options: BrowserWindowConstructorOptions): B
   const name = `window-state-${windowName}`;
   const store = new Store({ name });
   const defaultSize = {
-    width: options.width,
-    height: options.height,
+    width: 900,
+    height: 600,
   };
   let state = {};
   let win;
