@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Router from 'next/router';
+import styles from '../style/Login.module.css'
 
 function Home() {
   const [email, setEmail] = useState("");
@@ -27,21 +28,26 @@ function Home() {
   }
 
   return (
-    <React.Fragment>
+    <div className={styles.LoginCover}>
       <Head>
         <title>Login - Nextron (with-typescript)</title>
       </Head>
-      <div>
-        <div>
-          <form onSubmit={(e) => onSubmit(e)}>
+      <div className={styles.LoginFrameBox}>
+        <div className={styles.LoginTitle}>Login</div>
+        <div className={styles.LoginDiv}>
+          <form className={styles.LoginForm} onSubmit={(e) => onSubmit(e)}>
+            <div className={styles.LoginFormIdDiv}>
             <input name="email" type="text" placeholder="Email" required value={email} onChange={(e) => onChange(e)} ></input>
+            </div>
+            <div className={styles.LoginFormPWDiv}>
             <input name="password" type="password" placeholder="password" required value={password} onChange={(e) => onChange(e)} ></input>
-            <input type="submit" value="로그인 하기"></input>
+            </div>
+            <input className={styles.LoginFormButton} type="submit" value="로그인 하기"></input>
           </form>
-          <span>{error}</span>
+          <span className={styles.LoginError}>{error}</span>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 
