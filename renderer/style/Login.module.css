@@ -1,0 +1,126 @@
+.LoginCover {
+    background-color: hsl(216, 8%, 12%);
+    height: 100vh;
+    width: 100vw;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}
+
+.LoginFrameBox {
+    height: 60vh;
+    width: 70vw;
+    background-color: hsl(210, 3%, 25%);
+    border-radius: 10px;
+    margin: auto;
+    top: 50%;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: 10% 80% 10%;
+    grid-template-areas:
+    ". . LoginBack"
+    ". LoginTitle ."
+    ". LoginDiv ."
+    ". LoginDiv ."
+    ". LoginDiv ."
+    ". LoginDiv .";
+}
+
+.LoginTitle{
+    font-size: 3em;
+    grid-area: LoginTitle;
+    text-align: center;
+}
+.LoginBack{
+    grid-area: LoginBack;
+    margin: auto;
+    width: 80%;
+    height: 80%;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.25s;
+}
+.LoginBack:hover{
+    letter-spacing: 2px;
+    transform: scale(1.1);
+}
+
+.LoginDiv{
+    grid-area: LoginDiv;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.LoginError{
+    grid-row: 4/5;
+    text-align: center;
+}
+
+.LoginForm{
+    grid-row: 1/4;
+    text-align: center;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.LoginFormIdDiv{
+    grid-row: 1/2;
+    width: 100%;
+    margin: 10px;
+    border-radius: 20px;
+    background-color: #b3b3b3;
+    display: flex;
+    overflow: hidden;
+}
+
+.LoginFormIdIcon{
+    margin: 10px 20px;
+}
+
+.LoginFormIdInput{
+    width: 100%;
+    background-color: #b3b3b3;
+    border: none;
+    font-size: 1.2em;
+    outline: none;
+}
+
+.LoginFormPWDiv{
+    grid-row: 2/3;
+    width: 100%;
+    border-radius: 20px;
+    background-color: #b3b3b3;
+    margin: 10px;
+    display: flex;
+    overflow: hidden;
+}
+
+.LoginFormPWIcon{
+    margin: 10px 20px;
+}
+
+.LoginFormPWInput{
+    width: 100%;
+    background-color: #b3b3b3;
+    border: none;
+    font-size: 1.2em;
+    outline: none;
+}
+
+.LoginFormButton{
+    grid-row: 3/4;
+    margin: auto;
+    width: 35%;
+    border-radius: 20px;
+    background-color: #77af9c;
+    color: #d7fff1;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: 0.25s;
+    border: none;
+}
+.LoginFormButton:hover{
+    letter-spacing: 2px;
+    transform: scale(1.1);
+}
