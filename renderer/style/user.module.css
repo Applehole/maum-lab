@@ -5,5 +5,10 @@
     color: aliceblue;
     display: grid;
     grid-template-columns: 8% 1fr 30%;
-    grid-template-areas: "navi . .";
+    grid-template-areas: "navi . List";
+}
+
+.userListCover {
+    grid-area: List;
+    background-color: #36393f;
 }
