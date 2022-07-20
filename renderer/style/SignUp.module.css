@@ -1,4 +1,4 @@
-.LoginCover {
+.SignUpCover {
     background-color: hsl(216, 8%, 12%);
     height: 100vh;
     width: 100vw;
@@ -7,7 +7,7 @@
     align-items: center;
 }
 
-.LoginFrameBox {
+.SignUpFrameBox {
     height: 60vh;
     width: 70vw;
     background-color: hsl(210, 3%, 25%);
@@ -18,21 +18,21 @@
     grid-template-rows: repeat(6, 1fr);
     grid-template-columns: 10% 80% 10%;
     grid-template-areas:
-    ". . LoginBack"
-    ". LoginTitle ."
-    ". LoginDiv ."
-    ". LoginDiv ."
-    ". LoginDiv ."
-    ". LoginDiv .";
+    ". . SignUpBack"
+    ". SignUpTitle ."
+    ". SignUpDiv ."
+    ". SignUpDiv ."
+    ". SignUpDiv ."
+    ". SignUpDiv .";
 }
 
-.LoginTitle{
+.SignUpTitle{
     font-size: 3em;
-    grid-area: LoginTitle;
+    grid-area: SignUpTitle;
     text-align: center;
 }
-.LoginBack{
-    grid-area: LoginBack;
+.SignUpBack{
+    grid-area: SignUpBack;
     margin: auto;
     width: 80%;
     height: 80%;
@@ -41,30 +41,30 @@
     cursor: pointer;
     transition: 0.25s;
 }
-.LoginBack:hover{
+.SignUpBack:hover{
     letter-spacing: 2px;
     transform: scale(1.1);
 }
 
-.LoginDiv{
-    grid-area: LoginDiv;
+.SignUpDiv{
+    grid-area: SignUpDiv;
     display: grid;
     grid-template-rows: repeat(4, 1fr);
 }
 
-.LoginError{
+.SignUpError{
     grid-row: 4/5;
     text-align: center;
 }
 
-.LoginForm{
+.SignUpForm{
     grid-row: 1/4;
     text-align: center;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
 }
 
-.LoginFormIdDiv{
+.SignUpFormIdDiv{
     grid-row: 1/2;
     width: 100%;
     margin: 10px;
@@ -74,11 +74,11 @@
     overflow: hidden;
 }
 
-.LoginFormIdIcon{
+.SignUpFormIdIcon{
     margin: 10px 20px;
 }
 
-.LoginFormIdInput{
+.SignUpFormIdInput{
     width: 100%;
     background-color: #b3b3b3;
     border: none;
@@ -86,7 +86,7 @@
     outline: none;
 }
 
-.LoginFormPWDiv{
+.SignUpFormPWDiv{
     grid-row: 2/3;
     width: 100%;
     border-radius: 20px;
@@ -96,11 +96,11 @@
     overflow: hidden;
 }
 
-.LoginFormPWIcon{
+.SignUpFormPWIcon{
     margin: 10px 20px;
 }
 
-.LoginFormPWInput{
+.SignUpFormPWInput{
     width: 100%;
     background-color: #b3b3b3;
     border: none;
@@ -108,7 +108,7 @@
     outline: none;
 }
 
-.LoginFormButton{
+.SignUpFormButton{
     grid-row: 3/4;
     margin: auto;
     width: 35%;
@@ -120,7 +120,7 @@
     transition: 0.25s;
     border: none;
 }
-.LoginFormButton:hover{
+.SignUpFormButton:hover{
     letter-spacing: 2px;
     transform: scale(1.1);
 }

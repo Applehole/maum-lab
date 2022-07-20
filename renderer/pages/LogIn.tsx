@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Router from 'next/router';
 import styles from '../style/Login.module.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faLock, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
 function Home() {
   const [email, setEmail] = useState("");
@@ -26,6 +28,10 @@ function Home() {
       setError(err.message);
     }
   }
+  const backButton = () =>{
+    Router.back()
+}
+
 
   return (
     <div className={styles.LoginCover}>
@@ -34,13 +40,18 @@ function Home() {
       </Head>
       <div className={styles.LoginFrameBox}>
         <div className={styles.LoginTitle}>Login</div>
+        <button onClick={backButton} className={styles.LoginBack}>
+        <FontAwesomeIcon icon={faRightFromBracket} size="2x" />
+        </button>
         <div className={styles.LoginDiv}>
           <form className={styles.LoginForm} onSubmit={(e) => onSubmit(e)}>
             <div className={styles.LoginFormIdDiv}>
-            <input name="email" type="text" placeholder="Email" required value={email} onChange={(e) => onChange(e)} ></input>
+              <FontAwesomeIcon className={styles.LoginFormIdIcon} icon={faUser} size="2x" />
+              <input className={styles.LoginFormIdInput} name="email" type="text" placeholder="Email" required value={email} onChange={(e) => onChange(e)} ></input>
             </div>
             <div className={styles.LoginFormPWDiv}>
-            <input name="password" type="password" placeholder="password" required value={password} onChange={(e) => onChange(e)} ></input>
+              <FontAwesomeIcon className={styles.LoginFormPWIcon} icon={faLock} size="2x" />
+              <input className={styles.LoginFormPWInput} name="password" type="password" placeholder="password" required value={password} onChange={(e) => onChange(e)} ></input>
             </div>
             <input className={styles.LoginFormButton} type="submit" value="로그인 하기"></input>
           </form>
