@@ -1,0 +1,58 @@
+.naviCover {
+    grid-area: navi;
+    background-color: #36393f;
+    display: flex;
+    flex-direction: column;
+}
+
+.naviLogOutButton {
+    width: 80%;
+    height: 10%;    
+    border-radius: 60px;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: 0.25s;
+    position: relative;
+    display: block;
+    border: none;
+}
+
+.naviLogOutButton:hover {
+    border-radius: 10px;
+    background-color: #FB3737;
+}
+.naviHomeButton {
+    width: 80%;
+    height: 10%;    
+    border-radius: 60px;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: 0.25s;
+    position: relative;
+    display: block;
+    border: none;
+}
+
+
+.naviHomeButton:hover {
+    border-radius: 10px;
+    background-color: #4D8448;
+    color: white;
+}
+.naviChatButton {
+    width: 80%;
+    height: 10%;    
+    border-radius: 60px;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: 0.25s;
+    position: relative;
+    display: block;
+    border: none;
+}
+
+.naviChatButton:hover {
+    border-radius: 10px;
+    background-color: #F0D805;
+}
+

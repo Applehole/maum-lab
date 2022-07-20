@@ -23,7 +23,7 @@ function Home() {
     const auth = getAuth();
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      Router.push("next")
+      Router.push("user")
     } catch (err) {
       setError(err.message);
     }
