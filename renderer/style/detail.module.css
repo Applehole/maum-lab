@@ -1,0 +1,8 @@
+.detailCover {
+    background-color: hsl(216, 8%, 12%);
+    height: 100vh;
+    width: 100vw;
+    color: aliceblue;
+    display: flex;
+    align-items: center;
+}
