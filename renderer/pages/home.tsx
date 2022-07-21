@@ -21,14 +21,10 @@ function Home() {
           안녕하세요. 반갑습니다! <br></br> FireBase기반 채팅앱입니다.
         </div>
         <button onClick={GoToLogin} className={styles.HomeGoToLogin}>
-          <Link href="/LogIn">
-            <a>로그인</a>
-          </Link>
+            로그인
         </button>
         <button onClick={GoToSignUp} className={styles.HomeGoToSignUp}>
-          <Link href="/SignUp">
-            <a>회원가입</a>
-          </Link>
+            회원가입
         </button>
       </div>
     </div>
