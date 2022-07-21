@@ -5,11 +5,13 @@ import Router from 'next/router';
 import styles from '../style/Login.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { addDoc, collection, serverTimestamp, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
 
 function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "email") {
       setEmail(e.target.value)
@@ -21,9 +23,40 @@ function Home() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const auth = getAuth();
+    const dbService = getFirestore();
     try {
       await signInWithEmailAndPassword(auth, email, password)
-      console.log("Router",Router)
+
+      const q = query(
+        collection(dbService, "userOnline"),
+        orderBy("createdAt", "desc")
+        );
+      onSnapshot(q, async (snapshot) =>  {
+          const userArray = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          userId : doc.id,
+          online : doc.id,
+          ...doc.data(),
+          }));
+          console.log("userArray",userArray)
+          let filterUserArray = userArray.filter((el) => {
+            return el.userId === auth.currentUser?.uid
+          })
+          console.log("filterUserArray",filterUserArray.length)
+          if(filterUserArray.length){
+            const userStatusChange = doc(dbService, "userOnline", `${filterUserArray[0].id}`);
+            await updateDoc(userStatusChange,{
+              online: true
+            });
+          }else{
+            await addDoc(collection(dbService,"userOnline"),{ // 데이터베이스에 넣기
+              userId : auth.currentUser?.uid,
+              online : true ,
+              createdAt: serverTimestamp(),
+            })
+          }
+        });
+
       Router.push("user")
     } catch (err) {
       setError(err.message);

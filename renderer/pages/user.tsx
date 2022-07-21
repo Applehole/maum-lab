@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../style/user.module.css'
 import NaviBar from '../Components/NaviBar'
 import { getAuth, updateProfile } from "firebase/auth";
