@@ -27,15 +27,16 @@ function Home() {
     try {
       await signInWithEmailAndPassword(auth, email, password)
 
-      const q = query(
+      const loginQ = query(
         collection(dbService, "userOnline"),
         orderBy("createdAt", "desc")
         );
-      onSnapshot(q, async (snapshot) =>  {
+      onSnapshot(loginQ, async (snapshot) =>  {
           const userArray = snapshot.docs.map((doc) => ({
           id: doc.id,
           userId : doc.id,
           online : doc.id,
+          displayName : doc.id,
           ...doc.data(),
           }));
           console.log("userArray",userArray)
@@ -51,6 +52,7 @@ function Home() {
           }else{
             await addDoc(collection(dbService,"userOnline"),{ // 데이터베이스에 넣기
               userId : auth.currentUser?.uid,
+              displayName: auth.currentUser?.displayName,
               online : true ,
               createdAt: serverTimestamp(),
             })
