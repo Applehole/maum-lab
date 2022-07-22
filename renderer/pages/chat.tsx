@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import styles from '../../style/chat.module.css'
-import NaviBar from '../../Components/NaviBar'
-import UserList from '../../Components/UserList'
+import styles from '../style/chat.module.css'
+import NaviBar from '../Components/NaviBar'
+import UserList from '../Components/UserList'
 import { collection, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
+import Router from 'next/router';
 
 function chat() {
   const [userList, setUserList] = useState([])
@@ -22,6 +23,7 @@ function chat() {
           id: doc.id,
           userId: doc.id,
           online: doc.id,
+          displayName : doc.id,
           ...doc.data(),
         }));
         setUserList(userArray)
@@ -29,10 +31,18 @@ function chat() {
     }
     snapAsync()
   },[])
+
+  const createChat = () =>{
+    Router.push("chatList")
+  }
+
   return (
     <div className={styles.ChatCover}>
       <NaviBar />
-      채팅룸이야!
+      <div>
+        <div>여기는 채팅룸입니다</div>
+        <button onClick={createChat}> 새로운 채팅 만들기 </button>
+      </div>
       <div className={styles.userListCover}>
       <UserList userList={userList} />
       </div>

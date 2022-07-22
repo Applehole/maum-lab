@@ -47,13 +47,15 @@ function Home() {
           if(filterUserArray.length){
             const userStatusChange = doc(dbService, "userOnline", `${filterUserArray[0].id}`);
             await updateDoc(userStatusChange,{
-              online: true
+              online: true,
+              displayName: auth.currentUser?.displayName,
             });
           }else{
             await addDoc(collection(dbService,"userOnline"),{ // 데이터베이스에 넣기
               userId : auth.currentUser?.uid,
               displayName: auth.currentUser?.displayName,
               online : true ,
+              chat : [],
               createdAt: serverTimestamp(),
             })
           }

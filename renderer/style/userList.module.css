@@ -1,0 +1,42 @@
+.userListCover {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-template-areas: 
+    " title "
+    " user ";
+}
+
+.userListUserTitle {
+    grid-area: title;
+    margin: 10px;
+    text-align: center;
+}
+
+.userListUser {
+    grid-area: user;
+    margin: 10px 20px;
+    text-align: left;
+}
+
+.user {
+    border-radius: 5px;
+    height: 30px;
+    transition: 0.2s;
+    display: grid;
+    grid-template-columns: 4fr;
+    grid-template-areas: "id . . online";
+}
+
+.user:hover {
+    background-color: #a5a8ac;
+}
+
+.userId {
+    grid-area: id;
+}
+
+.userOnline {
+    grid-area: online;
+    color: green;
+}
