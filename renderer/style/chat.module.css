@@ -8,6 +8,38 @@
     grid-template-areas: "navi . List";
 }
 
+.ChatMainCover {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-areas: ". main .";
+}
+
+.ChatMain {
+    grid-area: main;
+    text-align: center;
+}
+
+.ChatCreateButton {
+    width: 100%;
+    border-radius: 20px;
+    background-color: #77af9c;
+    color: #d7fff1;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: 0.25s;
+    border: none;
+}
+.ChatCreateButton:hover{
+    letter-spacing: 2px;
+    transform: scale(1.1);
+}
+
+.ChatNoon {
+    height: 50%;
+    line-height: 300px;
+    text-align: center;
+}
+
 .userListCover {
     grid-area: List;
     background-color: #36393f;
