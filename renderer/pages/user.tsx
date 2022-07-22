@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from '../style/user.module.css'
 import NaviBar from '../Components/NaviBar'
+import UserList from '../Components/UserList'
 import { getAuth, updateProfile } from "firebase/auth";
+import { collection, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
 
 
 function user() {
     const auth = getAuth()
     const [userName, setUserName] = useState(auth.currentUser)
     const [input, setInput] = useState("")
-    console.log(auth.currentUser)
+    const [userList, setUserList] = useState([])
+
+    useEffect(()=>{
+
+      const dbService = getFirestore();
+      const q = query(
+        collection(dbService, "userOnline"),
+        orderBy("createdAt", "desc")
+      );
+      const snapAsync = async ()=>{
+        onSnapshot(q, async (snapshot) => {
+          const userArray = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            userId: doc.id,
+            online: doc.id,
+            ...doc.data(),
+          }));
+          setUserList(userArray)
+        })
+      }
+      snapAsync()
+    },[])
+
+    console.log("userList",userList)
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) =>{
       setInput(e.target.value)
@@ -37,7 +62,9 @@ function user() {
         </form>
         <div>유저이름 </div>
       </div>
-      <div className={styles.userListCover}>여긴 유저 목록이 보이는 곳이야</div>
+      <div className={styles.userListCover}>
+       <UserList userList={userList} />
+      </div>
     </>
     :<div>다시 로그인 하셔야 할듯한데요?</div>
     }

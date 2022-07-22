@@ -22,14 +22,10 @@ function App({Component, pageProps}: AppProps) {
   // Initialize Firebase
   
   const fbase = initializeApp(firebaseConfig);
-  const auth = getAuth();
-  const dbService = getFirestore();
   return (
-    <React.Fragment>
       <div>
         <Component {...pageProps} />
       </div>
-      </React.Fragment>
   );
 };
 
