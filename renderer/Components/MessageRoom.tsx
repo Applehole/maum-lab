@@ -9,7 +9,7 @@ function MessageRoom({ user }) {
                     Router.push(`${el}`)
                 }
                 return (
-                    <div onClick={directToChat} className={styles.messageCover} key={el.id}>
+                    <div key={el.id} onClick={directToChat} className={styles.messageCover} >
                         <div>채팅방이름 : {String(el).slice(2)}</div>
                         <div>참여자 이름 : {user.userId}</div>
                     </div>

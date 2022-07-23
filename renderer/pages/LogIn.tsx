@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { addDoc, collection, serverTimestamp, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
 
-function Home() {
+function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -49,13 +49,17 @@ function Home() {
               displayName: auth.currentUser?.displayName,
             });
           }else{
-            await addDoc(collection(dbService,"userOnline"),{
-              userId : auth.currentUser?.uid,
-              displayName: auth.currentUser?.displayName,
-              online : true ,
-              chat : [],
-              createdAt: serverTimestamp(),
-            })
+            if(filterUserArray.length){
+              await addDoc(collection(dbService,"userOnline"),{
+                userId : auth.currentUser?.uid,
+                displayName: auth.currentUser?.displayName,
+                online : true ,
+                chat : [],
+                createdAt: serverTimestamp(),
+              })
+            }else{
+              return;
+            }
           }
         });
 
@@ -98,4 +102,4 @@ function Home() {
   );
 };
 
-export default Home;
+export default Login;

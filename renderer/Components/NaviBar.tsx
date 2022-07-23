@@ -6,7 +6,7 @@ import { faHouse, faComment, faRightFromBracket } from "@fortawesome/free-solid-
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
 
-function Home() {
+function NaviBar() {
   const GoToUser = () => {
     Router.push("user")
   }
@@ -71,4 +71,4 @@ function Home() {
   );
 };
 
-export default Home;
+export default NaviBar;

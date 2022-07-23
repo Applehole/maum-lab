@@ -5,8 +5,6 @@ import { getAuth } from "firebase/auth";
 function Message({ data }) {
     const auth = getAuth()
     const scrollRef = useRef(null)
-    console.log("havetoFine key", data)
-
     const scrollToBottom = () => {
         scrollRef.current?.scrollIntoView({ behavior: "smooth" })
     }

@@ -34,8 +34,6 @@ function user() {
     snapAsync()
   }, [])
 
-  console.log("userList", userList)
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value)
   }

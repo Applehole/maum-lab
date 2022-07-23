@@ -5,6 +5,7 @@ import UserList from '../Components/UserList'
 import { getAuth } from "firebase/auth";
 import { addDoc, collection, serverTimestamp, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
 import Router from 'next/router';
+import Head from 'next/head';
 
 
 function chatList() {
@@ -48,8 +49,9 @@ function chatList() {
                 }
             }
             if (checkedPerson.length > 1) {
-                await addDoc(collection(dbService, `${randomNumber}`), {
-                    userId: auth.currentUser?.uid,
+                await addDoc(collection(dbService, `${String(randomNumber)}`), {
+                    creatorId: auth.currentUser?.uid,
+                    displayName: auth.currentUser?.displayName,
                     text: `${auth.currentUser?.uid}님이 ${checkedPerson.slice(1).join(" ")}님을 초대했습니다.`,
                     createdAt: serverTimestamp(),
                 })
