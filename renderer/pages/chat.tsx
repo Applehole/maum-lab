@@ -7,7 +7,7 @@ import UserList from '../Components/UserList'
 import { collection, onSnapshot, query, orderBy, getFirestore } from "firebase/firestore"
 import { getAuth } from "firebase/auth";
 import Router from 'next/router';
-import Message from '../Components/Message';
+import MessageRoom from '../Components/MessageRoom';
 
 function chat() {
   const [userList, setUserList] = useState([])
@@ -19,6 +19,7 @@ function chat() {
       collection(dbService, "userOnline"),
       orderBy("createdAt", "desc")
     );
+    console.log("q",q)
     const snapAsync = async () => {
       onSnapshot(q, async (snapshot) => {
         const userArray = snapshot.docs.map((doc) => ({
@@ -53,12 +54,10 @@ function chat() {
           {userData.map((user, idx)=>{
             return(
               <div key={idx}>
-                <Message user={user} />
+                <MessageRoom user={user} />
               </div>
             )
           })}
-          {/* <Message userData={userData} />
-          {userData.length ? <Message userData={userData} /> :<div className={styles.ChatNoon}>새로운 채팅을 만들어주세요!</div>} */}
         </div>
       </div>
       <div className={styles.userListCover}>
