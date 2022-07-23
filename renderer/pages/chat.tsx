@@ -7,6 +7,7 @@ import UserList from '../Components/UserList'
 import { collection, onSnapshot, query, orderBy, getFirestore } from "firebase/firestore"
 import { getAuth } from "firebase/auth";
 import Router from 'next/router';
+import Message from '../Components/Message';
 
 function chat() {
   const [userList, setUserList] = useState([])
@@ -41,6 +42,7 @@ function chat() {
     Router.push("chatList")
   }
 
+  console.log("userData",userData)
   return (
     <div className={styles.ChatCover}>
       <NaviBar />
@@ -48,7 +50,15 @@ function chat() {
         <div className={styles.ChatMain}>
           <h2>Chatting Room</h2>
           <button className={styles.ChatCreateButton} onClick={createChat}> 새로운 채팅 만들기 </button>
-          {userData.length ?<div></div> :<div className={styles.ChatNoon}>새로운 채팅을 만들어주세요!</div>}
+          {userData.map((user, idx)=>{
+            return(
+              <div key={idx}>
+                <Message user={user} />
+              </div>
+            )
+          })}
+          {/* <Message userData={userData} />
+          {userData.length ? <Message userData={userData} /> :<div className={styles.ChatNoon}>새로운 채팅을 만들어주세요!</div>} */}
         </div>
       </div>
       <div className={styles.userListCover}>

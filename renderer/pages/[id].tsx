@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../style/detail.module.css'
-
+import Router from 'next/router';
 
 function detail() {
   const [msg, setMsg] = useState("")
@@ -12,7 +12,7 @@ function detail() {
   const checkOnClick = () =>{
     
   }
-  
+  console.log(Router)
 
   return (
     <div className={styles.detailCover}>
