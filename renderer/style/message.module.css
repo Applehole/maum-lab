@@ -14,12 +14,12 @@
     grid-template-columns: 2fr;
     grid-template-rows: 2fr;
     grid-template-areas: 
-    "name ."
-    "msg .";
+    " otherName . "
+    " otherMsg . ";
 }
 
 .messageOtherName{
-    grid-area: name;
+    grid-area: otherName;
 }
 
 .messageOtherMessage {
@@ -27,7 +27,7 @@
     border-radius: 20px;
     color: black;
     padding: 10px;
-    grid-area: msg;
+    grid-area: otherMsg;
 }
 
 .messageMine {
