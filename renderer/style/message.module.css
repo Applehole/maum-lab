@@ -1,4 +1,53 @@
 .messageCover {
     grid-area: message;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+.messageCover::-webkit-scrollbar {
+    display: none;
+    }
+
+.messageOther {
+    text-align: left;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: 2fr;
+    grid-template-areas: 
+    "name ."
+    "msg .";
 }
 
+.messageOtherName{
+    grid-area: name;
+}
+
+.messageOtherMessage {
+    background-color :white;
+    border-radius: 20px;
+    color: black;
+    padding: 10px;
+    grid-area: msg;
+}
+
+.messageMine {
+    text-align: right;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: 2fr;
+    grid-template-areas: 
+    ". name"
+    ". msg";
+}
+
+.messageMyName{
+    grid-area: name;
+}
+.messageMineMessage {
+    background-color: #FFFF70;
+    border-radius: 20px;
+    color: black;
+    padding: 10px;
+    grid-area: msg;
+}
