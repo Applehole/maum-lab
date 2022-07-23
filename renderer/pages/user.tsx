@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styles from '../style/user.module.css'
 import NaviBar from '../Components/NaviBar'
 import UserList from '../Components/UserList'
+import Head from 'next/head';
 import { getAuth, updateProfile } from "firebase/auth";
-import { collection, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
+import { collection, onSnapshot, query, orderBy, getFirestore } from "firebase/firestore"
 
 
 function user() {
@@ -51,6 +52,9 @@ function user() {
 
   return (
     <div className={styles.userCover}>
+      <Head>
+        <title>User Page</title>
+      </Head>
       {userName ?
         <>
           <NaviBar />

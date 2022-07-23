@@ -15,27 +15,25 @@ function Home() {
   }
   const auth = getAuth()
   const dbService = getFirestore();
-
   const [userInfo, setUserInfo] = useState(null)
 
-  useEffect(()=>{
+  useEffect(() => {
     const auth = getAuth();
-    onAuthStateChanged(auth,(user)=>{
-      if(user){
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
         setUserInfo(user)
       }
     })
-  },[])
+  }, [])
 
-  console.log("navi userInfo", userInfo)
 
   const LogOut = () => {
-    try{
+    try {
       const q = query(
         collection(dbService, "userOnline"),
         orderBy("createdAt", "desc")
       );
-  
+
       onSnapshot(q, async (snapshot) => {
         const userArray = snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -43,19 +41,18 @@ function Home() {
           online: doc.id,
           ...doc.data(),
         }));
-        console.log("userArray",userArray)
-  
+
         let filterUserArray = userArray.filter((el) => {
           return el.userId === userInfo.uid
         })
-          const userChange = doc(dbService, "userOnline", `${filterUserArray[0]?.id}`);
-          await updateDoc(userChange, {
-            online: false
-          });
+        const userChange = doc(dbService, "userOnline", `${filterUserArray[0]?.id}`);
+        await updateDoc(userChange, {
+          online: false
+        });
       });
       signOut(auth)
       Router.push("home")
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
   }

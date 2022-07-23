@@ -39,11 +39,9 @@ function Home() {
           displayName : doc.id,
           ...doc.data(),
           }));
-          console.log("userArray",userArray)
           let filterUserArray = userArray.filter((el) => {
             return el.userId === auth.currentUser?.uid
           })
-          console.log("filterUserArray",filterUserArray.length)
           if(filterUserArray.length){
             const userStatusChange = doc(dbService, "userOnline", `${filterUserArray[0].id}`);
             await updateDoc(userStatusChange,{
@@ -51,7 +49,7 @@ function Home() {
               displayName: auth.currentUser?.displayName,
             });
           }else{
-            await addDoc(collection(dbService,"userOnline"),{ // 데이터베이스에 넣기
+            await addDoc(collection(dbService,"userOnline"),{
               userId : auth.currentUser?.uid,
               displayName: auth.currentUser?.displayName,
               online : true ,
@@ -74,7 +72,7 @@ function Home() {
   return (
     <div className={styles.LoginCover}>
       <Head>
-        <title>Login - Nextron (with-typescript)</title>
+        <title>Login Page</title>
       </Head>
       <div className={styles.LoginFrameBox}>
         <div className={styles.LoginTitle}>Login</div>
