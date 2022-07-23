@@ -96,14 +96,14 @@ function chatList() {
     return (
         <div className={styles.ChatListCover}>
             <NaviBar />
-            <div>
-                <div>채팅할 상대를 선택해주세요</div>
+            <div className={styles.chatListPickCover}>
+                <h3>채팅할 상대를 선택해주세요</h3>
                 <form onSubmit={(e) => onSubmit(e)}>
-                    <input type="submit" value="확인"></input>
+                    <input className={styles.chatListPickFormButton} type="submit" value="최종확인"></input>
                     {userList.map((user) => {
                         return (
-                            <div key={user.id}>
-                                <input type="checkBox"></input>
+                            <div className={styles.chatListPickFormDiv} key={user.id}>
+                                <input className={styles.chatListPickFormCheckBox} type="checkBox"></input>
                                 <div>{user?.displayName || user?.userId}</div>
                             </div>
                         )

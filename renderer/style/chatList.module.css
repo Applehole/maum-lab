@@ -4,8 +4,39 @@
     width: 100vw;
     color: aliceblue;
     display: grid;
-    grid-template-columns: 8% 1fr 30%;
-    grid-template-areas: "navi . List";
+    grid-template-columns: 8vw 62vw 30vw;
+    grid-template-areas: "navi pick List";
+}
+
+.chatListPickCover {
+    grid-area: pick;
+    text-align: center;
+}
+
+.chatListPickFormButton {
+    height: 30px;
+    border-radius: 20px;
+    background-color: #77af9c;
+    color: #d7fff1;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.25s;
+    border: none;
+}
+.chatListPickFormButton:hover{
+    letter-spacing: 2px;
+    transform: scale(1.1);
+}
+
+.chatListPickFormDiv {
+    display: flex;
+    padding: 10px;
+}
+
+.chatListPickFormCheckBox {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
 }
 
 .chatListSideCover {
