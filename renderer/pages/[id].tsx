@@ -62,8 +62,11 @@ function detail() {
     await addDoc(collection(dbService,`${String(router.query.id)}`),{ // 데이터베이스에 넣기
       text: msg,
       createdAt: serverTimestamp(),
-      creatorId : auth.currentUser?.uid
+      creatorId : auth.currentUser?.uid,
+      displayName: auth.currentUser?.displayName,
     })
+    setMsg("")
+
   }
 
   return (
@@ -73,8 +76,10 @@ function detail() {
         <h3 className={styles.messageTitleCover} >{`${String(router.query.id).slice(2)}번 채팅방`}</h3>
         <Message data={idMessage} />
         <form className={styles.messageFormCover} onSubmit={(e) => checkOnClick(e)}>
-          <input onChange={(e) => onChange(e)} type="text" value={msg} placeholder="여기에 작성하세요"></input>
-          <input type="submit" value="메세지보내기"></input>
+          <div className={styles.messageFormDivCover}>
+          <input className={styles.messageInput} onChange={(e) => onChange(e)} type="text" value={msg} placeholder="여기에 작성하세요"></input>
+          <input className={styles.messageButton} type="submit" value="메세지보내기"></input>
+          </div>
         </form>
       </div>
       <div className={styles.userListCover}>
