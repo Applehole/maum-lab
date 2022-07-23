@@ -1,6 +1,6 @@
 import styles from '../style/userList.module.css'
 
-function Home({ userList }) {
+function UserList({ userList }) {
 
     return (
         <div className={styles.userListCover} >
@@ -8,16 +8,16 @@ function Home({ userList }) {
             <div className={styles.userListUser}>
                 {userList.map((user) => {
                     return (
-                        <>
+                        <div key={user.id}>
                             {user.online ?
-                                <div className={styles.user} key={user.id}>
+                                <div className={styles.user} >
                                     <div className={styles.userId}>
                                         {user?.displayName || user.userId}
                                     </div>
                                     <div className={styles.userOnline}>온라인</div>
                                 </div>
                                 : <></>}
-                        </>
+                        </div>
                     )
                 })}
             </div>
@@ -25,4 +25,4 @@ function Home({ userList }) {
     );
 };
 
-export default Home;
+export default UserList;

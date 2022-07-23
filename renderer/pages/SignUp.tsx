@@ -6,7 +6,7 @@ import styles from '../style/SignUp.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faLock, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 
-function Home() {
+function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
@@ -62,4 +62,4 @@ function Home() {
     );
 };
 
-export default Home;
+export default SignUp;
