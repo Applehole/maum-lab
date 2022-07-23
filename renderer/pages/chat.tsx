@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from '../style/chat.module.css'
 import NaviBar from '../Components/NaviBar'
 import UserList from '../Components/UserList'
@@ -19,7 +18,6 @@ function chat() {
       collection(dbService, "userOnline"),
       orderBy("createdAt", "desc")
     );
-    console.log("q",q)
     const snapAsync = async () => {
       onSnapshot(q, async (snapshot) => {
         const userArray = snapshot.docs.map((doc) => ({
@@ -30,7 +28,7 @@ function chat() {
           ...doc.data(),
         }));
         setUserList(userArray)
-        const currentUserArray = userArray.filter((user)=>{
+        const currentUserArray = userArray.filter((user) => {
           return user.userId === auth.currentUser?.uid
         })
         setUserData(currentUserArray)
@@ -42,17 +40,18 @@ function chat() {
   const createChat = () => {
     Router.push("chatList")
   }
-
-  console.log("userData",userData)
   return (
     <div className={styles.ChatCover}>
+      <Head>
+        <title>ChatCreate</title>
+      </Head>
       <NaviBar />
       <div className={styles.ChatMainCover}>
         <div className={styles.ChatMain}>
           <h2>Chatting Room</h2>
           <button className={styles.ChatCreateButton} onClick={createChat}> 새로운 채팅 만들기 </button>
-          {userData.map((user, idx)=>{
-            return(
+          {userData.map((user, idx) => {
+            return (
               <div key={idx}>
                 <MessageRoom user={user} />
               </div>

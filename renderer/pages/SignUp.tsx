@@ -36,7 +36,7 @@ function Home() {
     return (
         <div className={styles.SignUpCover}>
       <Head>
-        <title>SignUp - Nextron (with-typescript)</title>
+        <title>SignUp Page</title>
       </Head>
       <div className={styles.SignUpFrameBox}>
         <div className={styles.SignUpTitle}>SignUp</div>

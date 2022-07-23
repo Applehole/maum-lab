@@ -1,6 +1,5 @@
 import React from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import styles from "../style/home.module.css"
 import Router from 'next/router';
 
@@ -14,7 +13,7 @@ function Home() {
   return (
     <div className={styles.HomeCover}>
       <Head>
-        <title>Home - Nextron (with-typescript)</title>
+        <title>Home Page</title>
       </Head>
       <div className={styles.HomeFrameBox}>
         <div className={styles.HomeFrameIntroduce}>
