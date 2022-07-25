@@ -9,3 +9,19 @@
 .messageCover:hover {
     background-color: #a5a8ac;
 }
+
+.messageDelete {
+    height: 30px;
+    width: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.25s;
+    background-color: red;
+    font-size: medium;
+    color: aliceblue;
+}
+
+.messageDelete:hover{
+    letter-spacing: 2px;
+    transform: scale(1.1);
+}
