@@ -39,17 +39,25 @@ function Login() {
           displayName : doc.id,
           ...doc.data(),
           }));
+          console.log("userArray",userArray)
+          console.log(1)
           let filterUserArray = userArray.filter((el) => {
             return el.userId === auth.currentUser?.uid
           })
+          console.log(2)
+          console.log("filterUserArray",filterUserArray)
           if(filterUserArray.length){
             const userStatusChange = doc(dbService, "userOnline", `${filterUserArray[0].id}`);
             await updateDoc(userStatusChange,{
               online: true,
               displayName: auth.currentUser?.displayName,
             });
+            console.log(3)
           }else{
             if(filterUserArray.length){
+              console.log(4)
+              return;
+            }else{
               await addDoc(collection(dbService,"userOnline"),{
                 userId : auth.currentUser?.uid,
                 displayName: auth.currentUser?.displayName,
@@ -57,10 +65,11 @@ function Login() {
                 chat : [],
                 createdAt: serverTimestamp(),
               })
-            }else{
+              console.log(5)
               return;
             }
           }
+          console.log(6)
         });
 
       Router.push("user")
