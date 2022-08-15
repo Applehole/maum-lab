@@ -33,28 +33,38 @@ function NaviBar() {
         collection(dbService, "userOnline"),
         orderBy("createdAt", "desc")
       );
-
+      console.log(1)
       onSnapshot(q, async (snapshot) => {
-        const userArray = snapshot.docs.map((doc) => ({
+        const naviUserData = snapshot.docs.map((doc) => ({
           id: doc.id,
           userId: doc.id,
           online: doc.id,
           ...doc.data(),
         }));
-
-        let filterUserArray = userArray.filter((el) => {
+        console.log(2)
+        let filternaviUserData = naviUserData.filter((el) => {
           return el.userId === userInfo.uid
         })
-        const userChange = doc(dbService, "userOnline", `${filterUserArray[0]?.id}`);
-        await updateDoc(userChange, {
-          online: false
-        });
+        console.log(3)
+        console.log("filternaviUserData",filternaviUserData)
+        if(filternaviUserData[0]?.online){
+          const userChange = doc(dbService, "userOnline", `${filternaviUserData[0]?.id}`);
+          await updateDoc(userChange, {
+            online: false
+          });
+          console.log(4)
+        }else{
+          console.log(5)
+          return;
+        }
       });
-      signOut(auth)
       Router.push("home")
+      signOut(auth)
+      console.log("is here?")
     } catch (err) {
       console.log(err)
     }
+    console.log(6)
   }
   return (
     <nav className={styles.naviCover}>

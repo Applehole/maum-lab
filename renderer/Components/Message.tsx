@@ -18,7 +18,7 @@ function Message({ data }) {
                 return (
                     data.creatorId === auth.currentUser?.uid ?
                         <div ref={scrollRef} className={styles.messageMine} key={data.id}>
-                            <div className={styles.messageName} >{`${data.displayName || data.creatorId}님`}</div>
+                            <div className={styles.messageMyName} >{`${data.displayName || data.creatorId}님`}</div>
                             <div className={styles.messageMineMessage}>{data.text}</div>
                         </div>
                         :
