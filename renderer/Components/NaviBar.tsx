@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Router from 'next/router';
 import styles from '../style/Navi.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse, faComment, faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faComment, faRightFromBracket,faMasksTheater } from "@fortawesome/free-solid-svg-icons";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { collection, onSnapshot, query, orderBy, getFirestore, doc, updateDoc } from "firebase/firestore"
 
@@ -12,6 +12,9 @@ function NaviBar() {
   }
   const GoToChat = () => {
     Router.push("chat")
+  }
+  const GoToOpenChat = () =>{
+    Router.push("open")
   }
   const auth = getAuth()
   const dbService = getFirestore();
@@ -70,6 +73,9 @@ function NaviBar() {
     <nav className={styles.naviCover}>
       <button onClick={GoToUser} className={styles.naviHomeButton} title="홈">
         <FontAwesomeIcon icon={faHouse} size="3x" />
+      </button>
+      <button onClick={GoToOpenChat} className={styles.openChatButton} title="오픈채팅방">
+        <FontAwesomeIcon icon={faMasksTheater} size="3x" />
       </button>
       <button onClick={GoToChat} className={styles.naviChatButton} title="채팅룸">
         <FontAwesomeIcon icon={faComment} size="3x" />

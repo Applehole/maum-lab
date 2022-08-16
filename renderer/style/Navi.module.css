@@ -33,7 +33,6 @@
     border: none;
 }
 
-
 .naviHomeButton:hover {
     border-radius: 10px;
     background-color: #4D8448;
@@ -54,5 +53,23 @@
 .naviChatButton:hover {
     border-radius: 10px;
     background-color: #F0D805;
+}
+
+.openChatButton {
+    width: 80%;
+    height: 10%;    
+    border-radius: 60px;
+    margin: 10px auto;
+    cursor: pointer;
+    transition: 0.25s;
+    position: relative;
+    display: block;
+    border: none;
+}
+
+.openChatButton:hover {
+    border-radius: 10px;
+    background-color: #4FA4CF;
+    color: white;
 }
 
